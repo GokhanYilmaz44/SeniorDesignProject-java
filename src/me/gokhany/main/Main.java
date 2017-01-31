@@ -4,8 +4,6 @@ import me.gokhany.manager.TweetManager;
 import me.gokhany.manager.TwitterCriteria;
 import me.gokhany.model.Tweet;
 
-import java.util.List;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -37,11 +35,10 @@ public class Main {
          **/
         criteria = TwitterCriteria.create()
                 .setQuerySearch("europe refugees")
-                .setSince("2016-05-01")
-                .setUntil("2016-10-25")
-                .setMaxTweets(120);
-        List<Tweet> allTweets = TweetManager.getTweets(criteria);
-        t = allTweets.get(0);
+                .setSince("2015-05-01")
+                .setUntil("2015-10-25")
+                .setMaxTweets(1);
+        t = TweetManager.getTweets(criteria).get(0);
 
         System.out.println("### Example 2 - Get tweets by query search [europe refugees]");
         System.out.println("Username: " + t.getUsername());
@@ -55,7 +52,7 @@ public class Main {
          *  Example 3 - Get tweets by username and bound dates
          **/
         criteria = TwitterCriteria.create()
-                .setUsername("cnnturk")
+                .setUsername("europe refugees")
                 .setSince("2016-08-15")
                 .setUntil("2016-08-16")
                 .setMaxTweets(1);

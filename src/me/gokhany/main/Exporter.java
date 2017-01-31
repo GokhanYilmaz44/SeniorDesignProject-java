@@ -1,5 +1,6 @@
 package me.gokhany.main;
 
+import me.gokhany.manager.MySQLConnection;
 import me.gokhany.manager.TweetManager;
 import me.gokhany.manager.TwitterCriteria;
 import me.gokhany.model.Tweet;
@@ -16,7 +17,8 @@ public class Exporter {
     public static void main(String[] args) {
         if (args == null || args.length == 0) {
             System.err.println("You must pass some parameters. Use \"-h\" to help.");
-            System.err.println("You can run your terminal to use parameters");
+            MySQLConnection myDb = new MySQLConnection();
+            myDb.insertUsers("cnnturk");
             System.exit(0);
         }
 
@@ -58,7 +60,7 @@ public class Exporter {
             }
 
             try {
-                BufferedWriter bw = new BufferedWriter(new FileWriter("twitter_data.csv"));
+                BufferedWriter bw = new BufferedWriter(new FileWriter("output_got.csv"));
                 bw.write("username;date;retweets;favorites;text;geo;mentions;hashtags;id;permalink");
                 bw.newLine();
 
